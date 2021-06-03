@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Identity;
 
-namespace src.backend.Data
+namespace Data
 {
     public class Role : IdentityRole<Guid> { }
 }

@@ -1,3 +1,4 @@
+using Core.Extensions;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +22,8 @@ namespace API.Configuration.Services
 
             services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(configuration.GetConnectionString("DatabaseConnection")));
+
+            services.RegisterServices();
         }
     }
 }

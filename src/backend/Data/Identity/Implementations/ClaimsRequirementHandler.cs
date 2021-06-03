@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Data.Identity.Claims;
 using Microsoft.AspNetCore.Authorization;
 
-namespace src.backend.Data.Identity.Implementations
+namespace Data.Identity.Implementations
 {
     public class ClaimsRequirementHandler : AuthorizationHandler<ClaimRequirement>
     {

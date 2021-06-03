@@ -4,7 +4,7 @@ using System.Security.Claims;
 using Data.Identity.Interfaces;
 using Microsoft.AspNetCore.Http;
 
-namespace src.backend.Data.Identity.Implementations
+namespace Data.Identity.Implementations
 {
     public class UserProvider : IUserProvider
     {

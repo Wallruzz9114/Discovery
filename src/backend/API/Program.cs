@@ -1,19 +1,46 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 using Core.Helpers;
+using Data.Repositories;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Models.Interfaces;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
+using Data.Seed;
 
 namespace API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var appUnitOfWork = services.GetService<IAppUnitOfWork>();
+                    var currencyConverter = services.GetService<ICurrencyConverter>();
+
+                    await DataSeeder.SeedProductData(appUnitOfWork, currencyConverter);
+
+                    if (services is IDisposable disposable) disposable.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occured during migration");
+                }
+            }
+
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

@@ -12,6 +12,8 @@ src/backend/Data/obj
 src/backend/Data/Migrations
 src/backend/Models/obj
 src/backend/Models/bin
+src/backend/Tests/obj
+src/backend/Tests/bin
 src/backend/.DS_Store
 src/backend/API/dump.rdb
 

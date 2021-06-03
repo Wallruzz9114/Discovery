@@ -1,12 +1,12 @@
 using Data.Repositories.Interfaces;
 using Models.Base;
 
-namespace Data
+namespace Data.Repositories
 {
     public interface IAppUnitOfWork : IUnitOfWork
     {
         ICustomerRepository CustomerRepository { get; }
-        IEventRepository EventRepository { get; }
+        IStoredEventRepository StoredEventRepository { get; }
         IProductRepository ProductRepository { get; }
     }
 }

@@ -39,7 +39,7 @@ namespace Models.Entities
             ProductBasePrice = Quantity * productPrice;
             ProductExchangePrice = ProductBasePrice;
 
-            if (currency != currencyConverter.GetCurrency().Name)
+            if (currency != currencyConverter.GetBaseCurrency().Name)
             {
                 var convertedPrice = currencyConverter.Convert(currency, ProductBasePrice);
                 ProductExchangePrice = Money.Of(convertedPrice.Value, currency);

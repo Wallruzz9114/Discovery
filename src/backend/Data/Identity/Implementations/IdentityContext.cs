@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using src.backend.Data;
+using Data;
 using Models.Entities;
 
 namespace Data.Identity.Implementations

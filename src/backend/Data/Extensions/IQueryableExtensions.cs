@@ -4,7 +4,7 @@ using System.Reflection;
 using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
-namespace src.backend.Data.Extensions
+namespace Data.Extensions
 {
     public static class IQueryableExtensions
     {

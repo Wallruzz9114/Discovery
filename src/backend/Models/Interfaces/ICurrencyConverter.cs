@@ -4,7 +4,7 @@ namespace Models.Interfaces
 {
     public interface ICurrencyConverter
     {
-        Currency GetCurrency();
+        Currency GetBaseCurrency();
         Money Convert(string fromCurrency, Money value);
     }
 }
