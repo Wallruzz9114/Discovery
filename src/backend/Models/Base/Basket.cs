@@ -22,7 +22,7 @@ namespace Models.Base
 
             Products.Add(new BasketProduct
             {
-                Id = productId,
+                ProductId = productId,
                 Price = price,
                 Quantity = quantity
             });

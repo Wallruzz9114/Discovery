@@ -36,10 +36,10 @@ namespace Models.Base
                 "USD" => new Currency(USD.Name, USD.Symbol),
                 "CAD" => new Currency(CAD.Name, CAD.Symbol),
                 "EUR" => new Currency(EUR.Name, EUR.Symbol),
-                "RMB" => new Currency(RMB.Name, RMB.Symbol),
-                "GBP" => new Currency(GBP.Name, GBP.Symbol),
-                "CFA" => new Currency(CFA.Name, CFA.Symbol),
-                "RUB" => new Currency(RUB.Name, RUB.Symbol),
+                // "RMB" => new Currency(RMB.Name, RMB.Symbol),
+                // "GBP" => new Currency(GBP.Name, GBP.Symbol),
+                // "CFA" => new Currency(CFA.Name, CFA.Symbol),
+                // "RUB" => new Currency(RUB.Name, RUB.Symbol),
                 _ => throw new ArgumentException($"Invalid code: { code }", nameof(code))
             };
 
@@ -52,10 +52,10 @@ namespace Models.Base
         public static Currency USD => new("USD", "$");
         public static Currency CAD => new("CAD", "$");
         public static Currency EUR => new("EUR", "€");
-        public static Currency RMB => new("RMB", "¥");
-        public static Currency GBP => new("GBP", "£");
-        public static Currency CFA => new("CFA", "CFA");
-        public static Currency RUB => new("RUB", "₽");
+        // public static Currency RMB => new("RMB", "¥");
+        // public static Currency GBP => new("GBP", "£");
+        // public static Currency CFA => new("CFA", "CFA");
+        // public static Currency RUB => new("RUB", "₽");
 
         public static List<string> SupportedCurrencies()
         {
@@ -64,10 +64,10 @@ namespace Models.Base
                 CAD.Name,
                 USD.Name,
                 EUR.Name,
-                RMB.Name,
-                GBP.Name,
-                CFA.Name,
-                RUB.Name
+                // RMB.Name,
+                // GBP.Name,
+                // CFA.Name,
+                // RUB.Name
             };
         }
     }

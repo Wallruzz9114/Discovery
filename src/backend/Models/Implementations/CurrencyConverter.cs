@@ -30,7 +30,9 @@ namespace Models.Implementations
                 new ExchangeRate(Currency.USD.Name, Currency.CAD.Name, (decimal)0.83),
                 new ExchangeRate(Currency.CAD.Name, Currency.USD.Name, (decimal)1.20),
                 new ExchangeRate(Currency.USD.Name, Currency.EUR.Name, (decimal)0.82),
-                new ExchangeRate(Currency.EUR.Name, Currency.USD.Name, (decimal)1.22)
+                new ExchangeRate(Currency.EUR.Name, Currency.USD.Name, (decimal)1.22),
+                new ExchangeRate(Currency.CAD.Name, Currency.EUR.Name, (decimal)0.68),
+                new ExchangeRate(Currency.EUR.Name, Currency.CAD.Name, (decimal)1.47)
             };
 
             return conversionRates;

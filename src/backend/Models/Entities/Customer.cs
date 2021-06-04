@@ -49,6 +49,20 @@ namespace Models.Entities
             return order.Id;
         }
 
+        public Guid ChangeOrder(Basket basket, Guid orderId, ICurrencyConverter currencyConverter)
+        {
+            if (!basket.Products.Any())
+            {
+                throw new BusinessException("An order should have at least one product.");
+            }
+
+            var orderToChange = Orders.Single(o => o.Id == orderId);
+            orderToChange.Change(basket, currencyConverter);
+
+            AddEntityEvent(new OrderChangedEvent(orderToChange.Id));
+            return orderToChange.Id;
+        }
+
         public void SetName(string value)
         {
             if (string.IsNullOrWhiteSpace(value)) throw new ArgumentNullException(nameof(value));

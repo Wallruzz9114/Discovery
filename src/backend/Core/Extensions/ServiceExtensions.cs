@@ -1,9 +1,10 @@
 using System;
 using System.Reflection;
-using Core.Features.Customers.Commands;
+using Core.Features.Customers.Commands.Register;
 using Core.Services.Implementations;
 using Core.Services.Interfaces;
 using Data.Identity.Implementations;
+using Data.Messages;
 using Data.Repositories;
 using Data.Repositories.Implementations;
 using Data.Repositories.Interfaces;
@@ -12,7 +13,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using Models.Implementations;
 using Models.Interfaces;
-using Data.Messages;
 
 namespace Core.Extensions
 {

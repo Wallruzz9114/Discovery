@@ -30,25 +30,44 @@ namespace Models.Entities
         {
             foreach (BasketProduct product in basket.Products)
             {
-                OrderLine orderLine = OrderLines.FirstOrDefault(ol => ol.ProductId == product.Id);
+                OrderLine orderLine = OrderLines.FirstOrDefault(ol => ol.ProductId == product.ProductId);
 
                 if (orderLine == null)
                 {
-                    OrderLine newOrderLine = new(Id, product.Id, product.Price, product.Quantity, basket.Currency, converter);
+                    OrderLine newOrderLine = new(Id, product.ProductId, product.Price, product.Quantity, basket.Currency, converter);
                     OrderLines.Add(newOrderLine);
                 }
                 else
                 {
-                    var basketProduct = basket.Products.Single(p => p.Id == product.Id);
+                    var basketProduct = basket.Products.Single(p => p.ProductId == product.ProductId);
                     orderLine.ChangeQuantity(basketProduct.Quantity, product.Price, basket.Currency, converter);
                 }
             }
+        }
+
+        public void Change(Basket basket, ICurrencyConverter currencyConverter)
+        {
+            ChangeDate = DateTime.UtcNow;
+            RemoveOrderLine(basket);
+            BuildOrderLines(basket, currencyConverter);
+            CalculateTotalPrice(basket.Currency);
         }
 
         private void CalculateTotalPrice(string currency)
         {
             var total = OrderLines.Sum(x => x.ProductExchangePrice.Value);
             TotalPrice = Money.Of(total, currency);
+        }
+
+        private void RemoveOrderLine(Basket basket)
+        {
+            var orderLines = OrderLines.ToList();
+
+            foreach (var orderLine in orderLines)
+            {
+                var product = basket.Products.SingleOrDefault(x => x.ProductId == orderLine.ProductId);
+                if (product is null) OrderLines.Remove(orderLine);
+            }
         }
     }
 }
